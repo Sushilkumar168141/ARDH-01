@@ -1,0 +1,107 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Change to 'master' if your default branch is master
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Scan assets and generate manifest.json
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+
+            const assetsDir = path.join(process.cwd(), "assets");
+            const allowedExts = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".svg"];
+
+            let slideshowImages = [];
+            let projects = [];
+
+            if (fs.existsSync(assetsDir)) {
+              const entries = fs.readdirSync(assetsDir);
+
+              // 1. Scan assets/Slideshow/ (case-insensitive folder search)
+              const slideshowFolderName = entries.find(e => e.toLowerCase() === "slideshow");
+              if (slideshowFolderName) {
+                const slideshowDir = path.join(assetsDir, slideshowFolderName);
+                if (fs.lstatSync(slideshowDir).isDirectory()) {
+                  slideshowImages = fs.readdirSync(slideshowDir)
+                    .filter(f => allowedExts.includes(path.extname(f).toLowerCase()))
+                    .map(f => `assets/${encodeURIComponent(slideshowFolderName)}/${encodeURIComponent(f)}`);
+                }
+              }
+
+              // 2. Scan assets/Projects/ for subfolders (case-insensitive)
+              const projectsFolderName = entries.find(e => e.toLowerCase() === "projects");
+              if (projectsFolderName) {
+                const projectsDir = path.join(assetsDir, projectsFolderName);
+                if (fs.lstatSync(projectsDir).isDirectory()) {
+                  const projectFolders = fs.readdirSync(projectsDir, { withFileTypes: true })
+                    .filter(d => d.isDirectory())
+                    .map(d => d.name)
+                    // Natural numerical sorting: 01_, 02_, 10_
+                    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }));
+
+                  projects = projectFolders.map(folder => {
+                    const folderPath = path.join(projectsDir, folder);
+                    const files = fs.readdirSync(folderPath)
+                      .filter(f => allowedExts.includes(path.extname(f).toLowerCase()))
+                      .map(f => ({
+                        fileName: f,
+                        url: `assets/${encodeURIComponent(projectsFolderName)}/${encodeURIComponent(folder)}/${encodeURIComponent(f)}`
+                      }));
+
+                    return { folderName: folder, images: files };
+                  }).filter(item => item.images.length > 0);
+                }
+              }
+            }
+
+            const manifest = {
+              slideshow: slideshowImages,
+              projects: projects
+            };
+
+            fs.writeFileSync("manifest.json", JSON.stringify(manifest, null, 2));
+            console.log(`Successfully generated manifest.json:`);
+            console.log(`- ${slideshowImages.length} slideshow image(s) indexed.`);
+            console.log(`- ${projects.length} project folder(s) indexed.`);
+          '
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

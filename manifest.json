@@ -1,0 +1,233 @@
+{
+  "slideshow": [
+    "assets/Slideshow/bus-stop_01.jpg",
+    "assets/Slideshow/bus-stop_02.jpg",
+    "assets/Slideshow/bus-stop_03.jpg",
+    "assets/Slideshow/bus-stop_04.jpg",
+    "assets/Slideshow/bus-stop_05.jpg",
+    "assets/Slideshow/bus-stop_06.jpg",
+    "assets/Slideshow/bus-stop_07.jpg",
+    "assets/Slideshow/bus-stop_08.jpg",
+    "assets/Slideshow/bus-stop_09.jpg",
+    "assets/Slideshow/bus-stop_10.jpg",
+    "assets/Slideshow/bus-stop_11.jpg",
+    "assets/Slideshow/bus-stop_12.jpg",
+    "assets/Slideshow/residence-01_01.jpg",
+    "assets/Slideshow/residence-01_02.jpg",
+    "assets/Slideshow/residence-01_03.jpg",
+    "assets/Slideshow/residence-01_04.jpg",
+    "assets/Slideshow/residence-01_05.jpg",
+    "assets/Slideshow/residence-01_06.jpg",
+    "assets/Slideshow/residence-01_07.jpg",
+    "assets/Slideshow/residence-01_08.jpg",
+    "assets/Slideshow/residence-01_09.jpg",
+    "assets/Slideshow/residence-01_10.jpg",
+    "assets/Slideshow/residence-01_11.jpg"
+  ],
+  "projects": [
+    {
+      "folderName": "01_Bus Stop",
+      "images": [
+        {
+          "fileName": "bus-stop_01.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_01.jpg"
+        },
+        {
+          "fileName": "bus-stop_02.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_02.jpg"
+        },
+        {
+          "fileName": "bus-stop_03.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_03.jpg"
+        },
+        {
+          "fileName": "bus-stop_04.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_04.jpg"
+        },
+        {
+          "fileName": "bus-stop_05.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_05.jpg"
+        },
+        {
+          "fileName": "bus-stop_06.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_06.jpg"
+        },
+        {
+          "fileName": "bus-stop_07.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_07.jpg"
+        },
+        {
+          "fileName": "bus-stop_08.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_08.jpg"
+        },
+        {
+          "fileName": "bus-stop_09.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_09.jpg"
+        },
+        {
+          "fileName": "bus-stop_10.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_10.jpg"
+        },
+        {
+          "fileName": "bus-stop_11.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/bus-stop_11.jpg"
+        },
+        {
+          "fileName": "Main.jpg",
+          "url": "assets/Projects/01_Bus%20Stop/Main.jpg"
+        }
+      ]
+    },
+    {
+      "folderName": "02_Residence Jhajjar",
+      "images": [
+        {
+          "fileName": "Main_01.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/Main_01.jpg"
+        },
+        {
+          "fileName": "residence-01_02.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_02.jpg"
+        },
+        {
+          "fileName": "residence-01_03.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_03.jpg"
+        },
+        {
+          "fileName": "residence-01_04.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_04.jpg"
+        },
+        {
+          "fileName": "residence-01_05.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_05.jpg"
+        },
+        {
+          "fileName": "residence-01_06.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_06.jpg"
+        },
+        {
+          "fileName": "residence-01_07.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_07.jpg"
+        },
+        {
+          "fileName": "residence-01_08.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_08.jpg"
+        },
+        {
+          "fileName": "residence-01_09.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_09.jpg"
+        },
+        {
+          "fileName": "residence-01_10.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_10.jpg"
+        },
+        {
+          "fileName": "residence-01_11.jpg",
+          "url": "assets/Projects/02_Residence%20Jhajjar/residence-01_11.jpg"
+        }
+      ]
+    },
+    {
+      "folderName": "03_Bus Stop",
+      "images": [
+        {
+          "fileName": "bus-stop_01.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_01.jpg"
+        },
+        {
+          "fileName": "bus-stop_02.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_02.jpg"
+        },
+        {
+          "fileName": "bus-stop_03.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_03.jpg"
+        },
+        {
+          "fileName": "bus-stop_04.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_04.jpg"
+        },
+        {
+          "fileName": "bus-stop_05.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_05.jpg"
+        },
+        {
+          "fileName": "bus-stop_06.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_06.jpg"
+        },
+        {
+          "fileName": "bus-stop_07.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_07.jpg"
+        },
+        {
+          "fileName": "bus-stop_08.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_08.jpg"
+        },
+        {
+          "fileName": "bus-stop_09.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_09.jpg"
+        },
+        {
+          "fileName": "bus-stop_10.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_10.jpg"
+        },
+        {
+          "fileName": "bus-stop_11.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/bus-stop_11.jpg"
+        },
+        {
+          "fileName": "Main.jpg",
+          "url": "assets/Projects/03_Bus%20Stop/Main.jpg"
+        }
+      ]
+    },
+    {
+      "folderName": "04_Residence Jhajjar",
+      "images": [
+        {
+          "fileName": "Main_01.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/Main_01.jpg"
+        },
+        {
+          "fileName": "residence-01_02.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_02.jpg"
+        },
+        {
+          "fileName": "residence-01_03.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_03.jpg"
+        },
+        {
+          "fileName": "residence-01_04.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_04.jpg"
+        },
+        {
+          "fileName": "residence-01_05.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_05.jpg"
+        },
+        {
+          "fileName": "residence-01_06.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_06.jpg"
+        },
+        {
+          "fileName": "residence-01_07.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_07.jpg"
+        },
+        {
+          "fileName": "residence-01_08.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_08.jpg"
+        },
+        {
+          "fileName": "residence-01_09.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_09.jpg"
+        },
+        {
+          "fileName": "residence-01_10.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_10.jpg"
+        },
+        {
+          "fileName": "residence-01_11.jpg",
+          "url": "assets/Projects/04_Residence%20Jhajjar/residence-01_11.jpg"
+        }
+      ]
+    }
+  ]
+}

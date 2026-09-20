@@ -3,81 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Project image gallery" />
-  <title>Project Gallery</title>
+  <title>LUMINA STUDIO — Architecture & Design</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <button id="backButton" class="back-button hidden" aria-label="Back to projects">
-        <span>←</span> Projects
+
+  <!-- Top Sticky Header -->
+  <header class="site-header">
+    <div class="brand" id="brand-logo" role="button" tabindex="0">
+      <!-- You can use an image from assets/Logo/ or this geometric badge -->
+      <div class="logo-badge">
+        <i class="ri-triangle-fill"></i>
+      </div>
+      <div class="brand-text">
+        <span class="site-name">LUMINA STUDIO</span>
+        <span class="site-motto">Form Follows Imagination & Nature</span>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <button class="nav-btn active" data-target="home">Home</button>
+      <button class="nav-btn" data-target="projects">
+        Projects <span class="badge" id="nav-project-count">0</span>
       </button>
-      <div class="brand">
-        <div class="brand-mark">PG</div>
-        <div>
-          <div class="brand-title">Project Gallery</div>
-          <div id="pageSubtitle" class="brand-subtitle">Explore projects</div>
-        </div>
-      </div>
-      <div class="topbar-actions">
-        <button id="fullscreenButton" class="icon-button hidden" title="Fullscreen" aria-label="Fullscreen">⛶</button>
-      </div>
-    </header>
+      <button class="nav-btn" data-target="about">About</button>
+      <button class="nav-btn" data-target="contact">Contact</button>
+    </nav>
 
-    <main>
-      <section id="homeView" class="view">
-        <div class="hero">
-          <p class="eyebrow">PROJECT SHOWCASE</p>
-          <h1>Your projects.<br><span>One visual library.</span></h1>
-          <p class="hero-copy">Choose a project to browse its images, concepts, screenshots, renders, and progress.</p>
-        </div>
-        <div id="projectGrid" class="project-grid"></div>
-      </section>
+    <!-- Mobile Hamburger Button -->
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+      <i class="ri-menu-4-line"></i>
+    </button>
+  </header>
 
-      <section id="galleryView" class="view hidden">
-        <div class="gallery-heading">
-          <div>
-            <p id="galleryEyebrow" class="eyebrow">PROJECT</p>
-            <h1 id="galleryTitle">Project</h1>
-            <p id="galleryDescription"></p>
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-nav-btn" data-target="home">Home</button>
+    <button class="mobile-nav-btn" data-target="projects">Projects</button>
+    <button class="mobile-nav-btn" data-target="about">About</button>
+    <button class="mobile-nav-btn" data-target="contact">Contact</button>
+  </div>
+
+  <!-- VIEW 1: HOME PAGE (Fullscreen pure image slideshow, zero text) -->
+  <main id="view-home" class="page-view active">
+    <div class="hero-slideshow" id="slideshow-wrapper"></div>
+    <button class="slide-nav-btn prev" id="slide-prev-btn" aria-label="Previous image">
+      <i class="ri-arrow-left-s-line"></i>
+    </button>
+    <button class="slide-nav-btn next" id="slide-next-btn" aria-label="Next image">
+      <i class="ri-arrow-right-s-line"></i>
+    </button>
+  </main>
+
+  <!-- VIEW 2: ALL PROJECTS DIRECTORY -->
+  <main id="view-projects" class="page-view">
+    <div class="content-container">
+      <div class="view-header">
+        <div class="view-title-block">
+          <h2>Selected Architecture & Spaces</h2>
+          <p>Sorted by folder name — only 1 main link per project</p>
+        </div>
+        <div class="meta-tag" id="folder-count-tag">0 Projects</div>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </main>
+
+  <!-- VIEW 3: SINGLE PROJECT SPLIT VIEWER (Left 1/4th vs Right 3/4th with Arrows) -->
+  <main id="view-detail" class="page-view">
+    <div class="detail-top-bar">
+      <button class="back-link-btn" id="back-to-projects-btn">
+        <i class="ri-arrow-left-line"></i> Back to Projects
+      </button>
+
+      <!-- Custom Dropdown: Main image + Project Name -->
+      <div class="project-dropdown-wrapper">
+        <button class="dropdown-trigger" id="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false">
+          <div class="dropdown-trigger-content">
+            <img id="dropdown-current-thumb" src="" alt="" class="dd-thumb" />
+            <span id="dropdown-current-name" class="dd-name">Select Project</span>
           </div>
-          <div id="imageCounter" class="image-counter">0 / 0</div>
+          <i class="ri-arrow-down-s-line dd-icon"></i>
+        </button>
+        <div class="dropdown-panel" id="dropdown-panel" role="listbox"></div>
+      </div>
+    </div>
+
+    <!-- 1/4th vs 3/4th Split Area -->
+    <div class="split-viewport">
+      <!-- Left 1/4th: Scrollable Thumbnails Only -->
+      <aside class="split-left-thumbnails" id="split-thumbnails" aria-label="Project Thumbnails"></aside>
+
+      <!-- Right 3/4th: Large Image with Left & Right Arrows -->
+      <section class="split-right-stage" aria-label="Full size viewer">
+        <button class="stage-nav-arrow stage-prev" id="stage-arrow-prev" aria-label="Previous project image">
+          <i class="ri-arrow-left-s-line"></i>
+        </button>
+        
+        <div class="stage-img-container">
+          <img id="stage-main-image" src="" alt="" />
         </div>
 
-        <div class="gallery-layout">
-          <aside id="thumbnailPanel" class="thumbnail-panel" aria-label="Project images"></aside>
-
-          <section class="viewer">
-            <button id="prevButton" class="nav-button prev" aria-label="Previous image">‹</button>
-            <div class="image-stage" id="imageStage">
-              <img id="mainImage" alt="" />
-              <div id="imageLoading" class="image-loading hidden">Loading…</div>
-              <div id="emptyState" class="empty-state hidden">
-                <div class="empty-icon">□</div>
-                <h2>No images yet</h2>
-                <p>Add images to this project's folder and update <code>data/projects.json</code>.</p>
-              </div>
-            </div>
-            <button id="nextButton" class="nav-button next" aria-label="Next image">›</button>
-          </section>
-        </div>
-
-        <div class="gallery-footer">
-          <span>Use <kbd>←</kbd> <kbd>→</kbd> to navigate</span>
-          <span>Click an image to view it full size</span>
-        </div>
+        <button class="stage-nav-arrow stage-next" id="stage-arrow-next" aria-label="Next project image">
+          <i class="ri-arrow-right-s-line"></i>
+        </button>
       </section>
-    </main>
-  </div>
+    </div>
+  </main>
 
-  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Full-size image">
-    <button id="closeLightbox" class="lightbox-close" aria-label="Close">×</button>
-    <img id="lightboxImage" alt="" />
-    <button id="lightboxPrev" class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>
-    <button id="lightboxNext" class="lightbox-nav lightbox-next" aria-label="Next image">›</button>
-    <div id="lightboxCounter" class="lightbox-counter"></div>
-  </div>
+  <!-- VIEW 4: ABOUT PAGE -->
+  <main id="view-about" class="page-view">
+    <div class="content-container">
+      <div class="view-header">
+        <div class="view-title-block">
+          <h2>About Lumina Studio</h2>
+          <p>Philosophy, vision, and architectural craftsmanship</p>
+        </div>
+      </div>
+
+      <div class="about-layout">
+        <div class="about-hero-text">
+          <h3>We design spaces that converse with light, material, and nature.</h3>
+          <p>Founded on the principle that form should elevate the human experience, Lumina Studio specializes in high-concept residential, commercial, and civic architecture. Each space begins not with geometry, but with an inquiry into the site’s geography, climate, and daily rhythms.</p>
+          <p>From monolithic concrete pavilions to minimal glass sanctuaries, our practice is rooted in honest materials, sculptural clarity, and enduring proportion.</p>
+        </div>
+
+        <div class="about-stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">14+</span>
+            <span class="stat-label">Years of Practice</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">48</span>
+            <span class="stat-label">Completed Works</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Design Awards</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Site-Contextual Design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- VIEW 5: CONTACT PAGE -->
+  <main id="view-contact" class="page-view">
+    <div class="content-container">
+      <div class="view-header">
+        <div class="view-title-block">
+          <h2>Get in Touch</h2>
+          <p>Start a dialogue about your future space or commission</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-panel">
+          <div class="contact-item">
+            <h4>Studio Address</h4>
+            <p>420 Meridian Boulevard, Studio 8A<br />San Francisco, CA 94107</p>
+          </div>
+          <div class="contact-item">
+            <h4>Inquiries</h4>
+            <p><a href="mailto:hello@luminastudio.design">hello@luminastudio.design</a><br />+1 (555) 382-9014</p>
+          </div>
+          <div class="contact-item">
+            <h4>Press & Publications</h4>
+            <p><a href="mailto:press@luminastudio.design">press@luminastudio.design</a></p>
+          </div>
+          <div class="contact-item">
+            <h4>Follow</h4>
+            <p>Instagram — @lumina.studio<br />LinkedIn — Lumina Studio Architecture</p>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="c-name">Your Name</label>
+            <input type="text" id="c-name" required placeholder="Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email Address</label>
+            <input type="email" id="c-email" required placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label for="c-type">Project Type</label>
+            <input type="text" id="c-type" placeholder="Residential / Interior / Commercial" />
+          </div>
+          <div class="form-group">
+            <label for="c-msg">Project Details</label>
+            <textarea id="c-msg" rows="5" required placeholder="Tell us about the site, timing, and scale..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Inquiry <i class="ri-arrow-right-line"></i></button>
+        </form>
+      </div>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
