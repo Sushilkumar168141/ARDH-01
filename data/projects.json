@@ -1,0 +1,32 @@
+[
+  {
+    "id": "project-1",
+    "name": "Project One",
+    "description": "Replace this with your first project's description.",
+    "cover": "images/project-1/01.svg",
+    "images": [
+      "images/project-1/01.svg",
+      "images/project-1/02.svg",
+      "images/project-1/03.svg"
+    ]
+  },
+  {
+    "id": "project-2",
+    "name": "Project Two",
+    "description": "Replace this with your second project's description.",
+    "cover": "images/project-2/01.svg",
+    "images": [
+      "images/project-2/01.svg",
+      "images/project-2/02.svg"
+    ]
+  },
+  {
+    "id": "project-3",
+    "name": "Project Three",
+    "description": "Replace this with your third project's description.",
+    "cover": "images/project-3/01.svg",
+    "images": [
+      "images/project-3/01.svg"
+    ]
+  }
+]
